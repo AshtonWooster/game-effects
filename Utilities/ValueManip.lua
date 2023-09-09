@@ -1,6 +1,6 @@
 --Value Manipulators Module Server
 --Ashton
---10.1.22 -- 2.14.23
+--10.1.22 -- 9.9.23
 
 --Modules--
 local valueManip = {}
@@ -81,12 +81,12 @@ end
 --Verify Class--
 function valueManip.VerifyClass(name)
 	for _, folder in pairs(classArray) do
-		if name == folder.Name then
-			return true
+		if string.lower(name) == string.lower(folder.Name) then
+			return folder.Name
 		end
 	end
 	
-	return false
+	return nil
 end
 
 --Verify Color3 Array--

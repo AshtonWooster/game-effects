@@ -1,6 +1,6 @@
 --Server Admin Script
 --Ashton
---9.18.22 -- 3.7.23
+--9.18.22 -- 9.9.23
 
 --Modules--
 local adminList = require(script.Parent:WaitForChild("AdminList"))
@@ -230,14 +230,18 @@ local COMMAND_LIST = {
 		local toPlayer = valueManip.VerifyString(props[2]) and players:FindFirstChild(props[2]) or player
 		local classTag = toPlayer:WaitForChild("Class")
 		
-		if not valueManip.VerifyString(props[1]) then
-			sendMessage(player, "Invalid class provided: "..props[1])
-		elseif valueManip.StringEmpty(props[1]) then
+		if valueManip.StringEmpty(props[1]) then
 			classTag.Value = ""
 			sendMessage(player, "Removed class from: "..toPlayer.Name)
 		else
-			classTag.Value = props[1]
-			sendMessage(player, "Switched "..toPlayer.Name.." to class: "..props[1])
+			local verifiedName = valueManip.VerifyClass(props[1])
+			
+			if verifiedName then
+				classTag.Value = verifiedName
+				sendMessage(player, "Switched "..toPlayer.Name.." to class: "..verifiedName)
+			else
+				sendMessage(player, "Invalid class provided: "..props[1])
+			end
 		end
 	end,
 }
