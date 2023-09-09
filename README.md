@@ -9,7 +9,7 @@ Everything here is written in Lua using Roblox Studio as the development environ
 Feel free to use anything here. 
 
 Notable Projects Include:
-    - Utilities/DialogueSystem
-    - Utilities/AdminSystem
-    - OrbEffects/NewOrbs
+- Utilities/DialogueSystem
+- Utilities/AdminSystem
+- OrbEffects/NewOrbs
     
