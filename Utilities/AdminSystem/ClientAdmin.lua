@@ -1,6 +1,6 @@
 --Client Admin Script
 --Ashton
---9.13.22 -- 3.31.23
+--9.13.22 -- 9.10.23
 
 --Modules--
 local mouseController = require(script.Parent:WaitForChild("Classes"):WaitForChild("Mouse"))
@@ -160,10 +160,11 @@ local function connectAll()
 			local newMove
 			local discon
 			local mouse = player:GetMouse()
-			local offset = adminMenu.Position - UDim2.fromScale(mouse.X/mouse.ViewSizeX, mouse.Y/mouse.ViewSizeY)
+			local viewSize = workspace.CurrentCamera.ViewportSize
+			local offset = adminMenu.Position - UDim2.fromScale(mouse.X/viewSize.X, mouse.Y/viewSize.Y)
 			mouseController.setIcon("Move")
 			newMove = mouse.Move:Connect(function()
-				adminMenu.Position = UDim2.fromScale(mouse.X/mouse.ViewSizeX, mouse.Y/mouse.ViewSizeY) + offset
+				adminMenu.Position = UDim2.fromScale(mouse.X/viewSize.X, mouse.Y/viewSize.Y) + offset
 			end)
 			
 			--Disconnect on mouse lift--
@@ -181,10 +182,11 @@ local function connectAll()
 	helpMove.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			local mouse = player:GetMouse()
-			local offset = helpMenu.Position - UDim2.fromScale(mouse.X/mouse.ViewSizeX, mouse.Y/mouse.ViewSizeY)
+			local viewSize = workspace.CurrentCamera.ViewportSize
+			local offset = helpMenu.Position - UDim2.fromScale(mouse.X/viewSize.X, mouse.Y/viewSize.Y)
 			mouseController.setIcon("Move")
 			newMove = mouse.Move:Connect(function()
-				helpMenu.Position = UDim2.fromScale(mouse.X/mouse.ViewSizeX, mouse.Y/mouse.ViewSizeY) + offset
+				helpMenu.Position = UDim2.fromScale(mouse.X/viewSize.X, mouse.Y/viewSize.Y) + offset
 			end)
 
 			--Disconnect on mouse lift--
