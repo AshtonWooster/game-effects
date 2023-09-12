@@ -8,7 +8,6 @@ local player = game.Players.LocalPlayer
 local runService = game:GetService("RunService")
 
 --Variables--
-local yHeight = 20
 local offset = 15
 local zoom = 0
 local zoomSens = 1
@@ -17,8 +16,8 @@ local zoomSens = 1
 local MAX_ZOOM = 20
 local MIN_ZOOM = -12
 
-function cameraManip.TopDown(newYHeight)
-	yHeight = newYHeight or yHeight
+function cameraManip.TopDown(newOffset)
+	offset = newOffset or offset
 	local mouse = player:GetMouse()
 	local character = player.Character or player.CharacterAdded:Wait()
 	local hRP = character:WaitForChild("HumanoidRootPart")
